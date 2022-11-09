@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 // app.use('/auth', require('./routes/authRouter.js')); *UNCOMMENT AFTER AUTHROUTER IS FUNCTIONAL*
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }));
 
-//Connection to image buckets (picture messages / profile pictures).
+//Connection to image buckets.
 let gfs;
 let gridFSBucket;
 const conn = mongoose.connection;
@@ -48,7 +48,7 @@ app.get('/file/:filename', async (req, res, next) => {
     } catch (error) {
         return next(new Error('Image not found'));
     }
-}) //Retrieve image from database to display in chatlog.
+}) //Retrieve image from database.
 
 //Error handling
 app.use((err, req, res, next) => {
