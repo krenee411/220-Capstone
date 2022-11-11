@@ -15,9 +15,10 @@ const port = process.env.PORT || 9000;
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/msgApp');
+    await mongoose.connect('mongodb://127.0.0.1:27017/msgApp');
     console.log('Connected to MongoDB');
 }
+// localhost:27017
 
 //Middleware
 app.use(express.json());
