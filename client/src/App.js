@@ -6,6 +6,7 @@ import About from './About/About.js';
 import Memories from './Memories/Memories.js';
 import NavBar from './NavBar/NavBar.js'
 
+
 function App() {
   // const UserContext = createContext()
   return (
@@ -25,6 +26,7 @@ function App() {
        </Routes>
 
       </BrowserRouter>
+  
     </div>
   );
 }
