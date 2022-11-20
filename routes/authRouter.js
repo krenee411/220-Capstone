@@ -47,7 +47,7 @@ authRouter
                     return next(new Error(failedLogin));
                 }
                 const token = jwt.sign(account.withoutPassword(), process.env.SECRET);
-                return res.status(200).send({ token, account: updatedStatus.withoutPassword() });
+                return res.status(200).send({ token, account: account.withoutPassword() });
             })
         })
     }) //Login to existing account
