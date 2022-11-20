@@ -10,9 +10,10 @@ function App() {
   // const UserContext = createContext()
   return (
     <div>
+      <BrowserRouter>
         <NavBar />
 
-    <BrowserRouter>
+
        <Routes>
 
          <Route element={<Landing/>} exact path='/'></Route>
@@ -22,6 +23,7 @@ function App() {
          <Route element={<Memories/>} path='/Memories'></Route>
 
        </Routes>
+
       </BrowserRouter>
     </div>
   );
