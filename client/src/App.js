@@ -1,40 +1,28 @@
 import './App.css';
-import {createContext} from 'react'
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom'
+// import {createContext} from 'react'
+import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import Landing from './Landing/Landing.js';
-import About from './About/About';
-import Blog from './Blog/Blog';
+import About from './About/About.js';
+import Memories from './Memories/Memories.js';
+import NavBar from './NavBar/NavBar.js'
 
-const UserContext = createContext()
 function App() {
-
+  // const UserContext = createContext()
   return (
     <div>
+        <NavBar />
 
-       <BrowserRouter>
-        <UserContext.Provider value={{}}>
-          <Link to="/">Home</Link>
+    <BrowserRouter>
+       <Routes>
 
-          <Link to="/blog">Blogs</Link>
+         <Route element={<Landing/>} exact path='/'></Route>
 
-          <Link to="/about">About</Link>
+         <Route element={<About/>} path='/about'></Route>
 
-          <Routes>
+         <Route element={<Memories/>} path='/Memories'></Route>
 
-            <Route element={<Landing/>} exact path='/'></Route>
-
-            <Route element={<About/>} exact path='/about'></Route>
-
-            <Route element={<Blog/>} exact path='/blog'></Route>
-
-          </Routes>
-
-        </UserContext.Provider>
-
-
-
-       </BrowserRouter>
-
+       </Routes>
+      </BrowserRouter>
     </div>
   );
 }
