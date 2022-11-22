@@ -1,15 +1,19 @@
 import React from 'react';
 import { useState } from "react";
-import { Login } from "./AuthForm/Login"
-import { Signup } from "./AuthForm/Signup"
+import Login from "./Login"
+import Signup from "./Signup"
 
-export default function AuthForm(){
-    const [form, setForm] = useState('login');
+export default function RenderForm(){
+    const [form, setForm] = useState("login");
+
+    const toggleForm = (formValue) => {
+        setForm(formValue);
+    }
 
     return(
         <div>
             {
-                form === "login" ? <Login/>: <Signup/>
+                form === "login" ? <Login toggleForm={toggleForm} hello="hello"/> : <Signup toggleForm={toggleForm}/>
             }
         </div>
     )

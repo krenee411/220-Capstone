@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Form from "./Form"
 
-export default function Signup(){
+export const Signup = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -15,7 +15,9 @@ export default function Signup(){
         <>
             <Form submit={handleSubmit} username={username} password={password} setUsername={setUsername} setPassword={setPassword}/>
             <h3>Already have an account?</h3>
-            <button>SIGNIN</button>
+            <button onClick={() => props.toggleForm('login')}>SIGNIN</button>
         </>
     )
 }
+
+export default Signup;
