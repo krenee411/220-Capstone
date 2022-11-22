@@ -1,10 +1,11 @@
 import './App.css';
 // import {createContext} from 'react'
-import { BrowserRouter, Route, Routes} from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
 import Landing from './Landing/Landing.js';
 import About from './About/About.js';
 import Memories from './Memories/Memories.js';
 import NavBar from './NavBar/NavBar.js'
+import Login from './AuthForm/Login';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
          <Route element={<About/>} path='/about'></Route>
 
          <Route element={<Memories/>} path='/Memories'></Route>
+         <Route element={<Login/>} path = '/login'></Route>
 
        </Routes>  
     </div>

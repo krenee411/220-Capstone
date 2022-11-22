@@ -1,4 +1,4 @@
-import { BrowserRouter, Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {React} from 'react'
 import './NavBar.css'
 
@@ -14,7 +14,7 @@ export default function Navbar(){
 
        <Link className='navLink' to="/about">About</Link>
 
-       <button className='button'>Login</button>
+       <Link className='button' to="/login">Login</Link>
 
 
  </div>
