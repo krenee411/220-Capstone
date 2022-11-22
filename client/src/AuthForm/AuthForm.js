@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default function AuthForm(){
+export default function AuthForm({submit}){
+
     return(
         <form>
             <div className=''>
@@ -18,7 +19,7 @@ export default function AuthForm(){
             placeholder='Password'
             />
             <div>
-                <button className=''>Button</button>
+                <button className=''>{submit}</button>
             </div>
         </form>
     )
