@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Form from "./Form"
 
 export default function Login(){
     const [username, setUsername] = useState("");
@@ -9,19 +10,11 @@ export default function Login(){
         console.log(username)
     }
 
-
-
     return(
         <>
-            <form>
-                <label htmlFor="username">Username</label>
-                <input type="text" placeholder="username123" id="username" name="username" value={username} onChange={(e) => setUsername(e.target.value)}/><br></br>
-                <label htmlFor="password">Password</label>
-                <input type="password" placeholder="***********" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/><br></br>
-                <button type="submit">LOGIN</button>
-            </form>
+            <Form submit={handleSubmit} username={username} password={password} setUsername={setUsername} setPassword={setPassword}/>
             <h3>Don't have an account?</h3>
-            <button>SIGNIN</button>
+            <button>SIGNUP</button>
         </>
     )
 }
