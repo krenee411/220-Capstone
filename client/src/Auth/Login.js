@@ -2,15 +2,16 @@ import React from "react"
 import { useState } from 'react';
 import Form from "./Form"
 
+
 export const Login = (props) => {
     
-    console.log(props)
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username)
+        
     }
 
     return(

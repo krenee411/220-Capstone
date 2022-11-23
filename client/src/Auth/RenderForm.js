@@ -13,7 +13,7 @@ export default function RenderForm(){
     return(
         <div>
             {
-                form === "login" ? <Login toggleForm={toggleForm} hello="hello"/> : <Signup toggleForm={toggleForm}/>
+                form === "login" ? <Login toggleForm={toggleForm}/> : <Signup toggleForm={toggleForm}/>
             }
         </div>
     )
