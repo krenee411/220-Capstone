@@ -1,7 +1,6 @@
 {
   "name": "220-capstone",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -31,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/krenee411/220-Capstone/issues"
   },
-  "homepage": "https://github.com/krenee411/220-Capstone#readme"
+  "homepage": "https://github.com/krenee411/220-Capstone#readme",
+  "description": ""
 }
