@@ -6,14 +6,14 @@ export default function AuthForm(){
             <div className=''>
             <input
             type={'text'}
-            // value={username}
+            value={username}
             name='username'
             placeholder='Username'
             />
             </div>
             <input
             type={'text'}
-            // value={password}
+            value={password}
             name='password'
             placeholder='Password'
             />

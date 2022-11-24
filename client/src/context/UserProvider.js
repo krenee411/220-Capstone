@@ -1,9 +1,9 @@
 import React from 'react'
-import axios from 'axios'
 
-const axios = require('axios');
+function UserProvider() {
+  return (
+    <div>UserProvider</div>
+  )
+}
 
-axios.get('http://webcode.me').then(resp => {
-
-    console.log(resp.data);
-});
+export default UserProvider

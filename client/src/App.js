@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import Landing from './Landing/Landing.js';
 import About from './About/About.js';
-import Memories from './Memories/Memories.js';
+import MemoriesDisplay from './MemoriesDisplay/MemoriesDisplay.js';
 import NavBar from './NavBar/NavBar.js'
 
 
@@ -21,7 +21,7 @@ function App() {
 
          <Route element={<About/>} path='/about'></Route>
 
-         <Route element={<Memories/>} path='/Memories'></Route>
+         <Route element={<MemoriesDisplay/>} path='/Memories'></Route>
 
        </Routes>
 
