@@ -7,8 +7,6 @@ import Memories from './Memories/Memories.js';
 import NavBar from './NavBar/NavBar.js'
 import RenderForm from './Auth/RenderForm'
 
-
-
 function App() {
   const [token, setToken] = useState()
 
@@ -23,7 +21,7 @@ function App() {
          <Route element={<Landing/>} exact path='/'></Route>
          <Route element={<About/>} path='/about'></Route>
          <Route element={<Memories/>} path='/Memories'></Route>
-         <Route element={<RenderForm/>} path = '/login'></Route>
+         <Route element={<RenderForm setToken={setToken}/>} path = '/login'></Route>
        </Routes>  
     </div>
   );

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Login from "./Login"
 import Signup from "./Signup"
 
-export default function RenderForm(){
+export default function RenderForm(props){
     const [form, setForm] = useState("login");
 
     const toggleForm = (formValue) => {
@@ -13,7 +13,7 @@ export default function RenderForm(){
     return(
         <div>
             {
-                form === "login" ? <Login toggleForm={toggleForm}/> : <Signup toggleForm={toggleForm}/>
+                form === "login" ? <Login toggleForm={toggleForm} setToken={props.setToken}/> : <Signup toggleForm={toggleForm} setToken={props.setToken}/>
             }
         </div>
     )
