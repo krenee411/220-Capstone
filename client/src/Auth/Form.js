@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Form(props){
     return(
+        
         <form onSubmit={props.submit}>
             <label htmlFor="email">Email</label>
             <input type="email" placeholder="student@bryanuniversity.edu" id="email" name="email" value={props.email} onChange={(e) => props.setEmail(e.target.value)}/><br></br>

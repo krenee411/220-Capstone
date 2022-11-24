@@ -1,9 +1,12 @@
 import React from 'react'
+import './Landing.css'
+import Memories from '../Memories/Memories'
 
 function Landing() {
   return (
     <div><h1>Home</h1>
         <p>Welcome to our First Family Project Management HOME Page!!</p>
+        <Memories/>
 </div>
   )
 }
