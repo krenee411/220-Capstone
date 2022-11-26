@@ -6,7 +6,7 @@ export default function Memories(){
 
     return (
         <div className="memories">
-        <h1>Best Place to Visit Ever!!</h1>
+        <h1>{memory.title}</h1>
 
         <img src={pic1} alt="hello"/>
 

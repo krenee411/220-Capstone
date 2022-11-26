@@ -2,10 +2,12 @@ import React, {useState} from "react"
 import axios from "axios";
 
 export default function MemoriesForm(){
+    const {addMemory} = useContext(UserContext)
     const [memory, setMemory] = useState({
         title: '',
         message: '',
     });
+    
 
     function handleChange(event){
         const { name, value } = event.target;
