@@ -1,4 +1,4 @@
 
 body{
-    background: url("./images/landingbackground.jpg");
+    background: fixed, url("./images/landingbackground.jpg");
 }
