@@ -28,6 +28,7 @@ app.use(morgan('dev'));
 //Routes
 app.use('/auth', require('./routes/authRouter.js'));
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }));
+app.use('/api/gallery', require('./routes/galleryRouter.js'));
 
 //Connection to image buckets.
 let gfs;
