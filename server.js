@@ -5,7 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Grid = require('gridfs-stream');
-const expressJwt = require('express-jwt');
+const expressJwt = require('express-jwt'); //express-jwt@6.1.0
 require('dotenv').config();
 
 //Port
@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 //Routes
 app.use('/auth', require('./routes/authRouter.js'));
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }));
-app.use('/home', )
+app.use('/api/gallery', require('./routes/galleryRouter.js'));
 
 //Connection to image buckets.
 let gfs;
