@@ -1,7 +1,7 @@
 const express = require('express');
 const galleryRouter = express.Router();
 const Account = require('../models/account.js');
-const Media = require('../models/media.js');
+// const Media = require('../models/media.js'); *UNCOMMENT WHEN MEDIA SCHEMA IS MADE*
 const multer = require('multer');
 const { GridFsStorage } = require('multer-gridfs-storage');
 const uuid = require('uuid');
