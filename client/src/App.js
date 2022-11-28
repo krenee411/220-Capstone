@@ -1,41 +1,31 @@
 
 import './App.css';
-import {createContext} from 'react'
-import { BrowserRouter, Route, Routes, Link} from 'react-router-dom'
+import React, { useState } from 'react';
+import { Route, Routes} from 'react-router-dom'
 import Landing from './Landing/Landing.js';
-import About from './About/About';
-import Blog from './Blog/Blog';
+import About from './About/About.js';
+import Memories from './Memories/Memories.js';
+import NavBar from './NavBar/NavBar.js'
+import RenderForm from './Auth/RenderForm'
 
-const UserContext = createContext()
+
+
 function App() {
+  const [token, setToken] = useState()
 
+  if(!token){
+    return <RenderForm setToken={setToken}/>
+  }
+  
   return (
     <div>
-
-       <BrowserRouter>
-        <UserContext.Provider value={{}}>
-          <Link to="/">Home</Link>
-
-          <Link to="/blog">Blogs</Link>
-
-          <Link to="/about">About</Link>
-
-          <Routes>
-
-            <Route element={<Landing/>} exact path='/'></Route>
-
-            <Route element={<About/>} exact path='/about'></Route>
-
-            <Route element={<Blog/>} exact path='/blog'></Route>
-
-          </Routes>
-
-        </UserContext.Provider>
-
-
-
-       </BrowserRouter>
-
+       <NavBar />
+       <Routes>
+         <Route element={<Landing/>} exact path='/'></Route>
+         <Route element={<About/>} path='/about'></Route>
+         <Route element={<Memories/>} path='/Memories'></Route>
+         <Route element={<RenderForm/>} path = '/login'></Route>
+       </Routes>  
     </div>
   );
 }
