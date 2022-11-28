@@ -10,10 +10,6 @@ const UserContext = createContext()
 function App() {
 
   return (
-<<<<<<< HEAD
-    <div className="App">
-    
-=======
     <div>
 
        <BrowserRouter>
@@ -40,7 +36,6 @@ function App() {
 
        </BrowserRouter>
 
->>>>>>> 46e3ed21b72c193d7edb8d2455eafce9af0039a1
     </div>
   );
 }
