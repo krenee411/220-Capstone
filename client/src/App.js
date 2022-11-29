@@ -13,9 +13,9 @@ import RenderForm from './Auth/RenderForm'
 function App() {
   const [token, setToken] = useState()
 
-  if(!token){
-    return <RenderForm setToken={setToken}/>
-  }
+  // if(!token){
+  //   return <RenderForm setToken={setToken}/>
+  // }
   
   return (
     <div>
