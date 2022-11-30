@@ -15,9 +15,10 @@ const port = process.env.PORT || 9000;
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/msgApp');
+    await mongoose.connect('mongodb://127.0.0.1:27017/Pensacoola');
     console.log('Connected to MongoDB');
 }
+// localhost:27017
 
 //Middleware
 app.use(express.json());
@@ -25,7 +26,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 //Routes
-// app.use('/auth', require('./routes/authRouter.js')); *UNCOMMENT AFTER AUTHROUTER IS FUNCTIONAL*
+app.use('/auth', require('./routes/authRouter.js'));
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }));
 app.use('/api/gallery', require('./routes/galleryRouter.js'));
 
@@ -58,4 +59,9 @@ app.use((err, req, res, next) => {
         res.status(err.status);
     }
     return res.send({ errMsg: err.message });
+})
+
+//Listener
+app.listen(port, () => {
+    console.log(`Server is listening on port: ${port}`);
 })
