@@ -88,6 +88,6 @@ memoriesRouter
                 return res.status(201).send(savedMemory);
             })
         })
-    }) //Allow user to upload a new image to the gallery.
+    }) //Allow user to upload a new memory.
 
 module.exports = memoriesRouter;
