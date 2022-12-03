@@ -10,7 +10,7 @@ export default function Navbar(){
 
        <Link className='navLink' to="/">Home</Link>
 
-       <Link className='navLink' to="/memories">Memories</Link>
+       <Link className='navLink' to="/memoriesDisplay">Memories</Link>
 
        <Link className='navLink' to="/about">About</Link>
 

@@ -1,11 +1,14 @@
 import React from "react";
+
 import pic1 from './images/memoriesPic.jpg'
 
 export default function Memories(){
 
 
+
     return (
         <div className="memories">
+
         <h1>Best Place to Visit Ever!!</h1>
 
         <img src={pic1} alt="hello"/>

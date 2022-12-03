@@ -1,11 +1,15 @@
-import React, {useState} from "react"
-import axios from "axios";
+import React, {useState, useContext} from "react"
+import {UserContext} from '../Context/UserProvider'
 
+
+const initInputs =     {
+    title: '',
+    message: '',
+};
 export default function MemoriesForm(){
-    const [memory, setMemory] = useState({
-        title: '',
-        message: '',
-    });
+    const [memory, setMemory] = useState(initInputs);
+    cost [selectedFile, setSelectedFile] = useState();
+    const {addMemory} = useContext(UserContext);
 
     function handleChange(event){
         const { name, value } = event.target;
@@ -18,31 +22,34 @@ export default function MemoriesForm(){
         console.log(memory);
     }
 
-    function addMemory(event){
-        event.preventDefault()
-        const newMemory = {
-            title: memory.title,
-            message: memory.title,
-        };
-        axios.post('/newmemory', newMemory);
-        
+    function handleSubmit(e){
+        e.preventDefault()
+        addMemory(memory)
+        setMemory(initInputs)
     }
+       
+    const { title, message } = memory
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <input
                 type='text'
                 name='title'
-                value={memory.title}
+                value={title}
                 onChange={handleChange}
                 placeholder='Title'
                 />
                 <input
                 type='text'
                 name='message'
-                value={memory.message}
+                value={message}
                 onChange={handleChange}
                 placeholder='message'
+                />
+                <input
+                type='file'
+                value={selectedFile}
+                onChange={(e) => setSelectedFile(e.target.files[0])} 
                 />
                 <button onClick={addMemory}>Post Memory</button>
                 
