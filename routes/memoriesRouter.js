@@ -58,11 +58,6 @@ memoriesRouter
                 return next(new Error('Sorry, we are having trouble finding your account.'));
             }
 
-            if (req.file !== undefined) {
-                const imgUrl = `http://localhost:9000/file/${req.file.filename}`;
-                req.body.img_url = imgUrl;
-            }
-
             const addHash = (str) => {
                 if (str.charAt(0) !== '#') {
                     return `#${str}`;
@@ -71,15 +66,18 @@ memoriesRouter
             }
             const tagList = req.body.tags.split(', ').map(e => addHash(e));
 
-            const newMemory = new Memory(
-                {
-                    title: req.body.title,
-                    message: req.body.message,
-                    tags: tagList,
-                    img_url: req.body.img_url,
-                    user: req.user
-                }
-            );
+            req.body = {
+                title: req.body.title,
+                message: req.body.message,
+                tags: tagList,
+                user: req.user
+            }
+            if (req.file !== undefined) {
+                const imgUrl = `http://localhost:9000/file/${req.file.filename}`;
+                req.body.img_url = imgUrl;
+            }
+            
+            const newMemory = new Memory(req.body);
             newMemory.save((err, savedMemory) => {
                 if (err) {
                     res.status(500);
@@ -89,5 +87,45 @@ memoriesRouter
             })
         })
     }) //Allow user to upload a new memory.
+
+    .delete('/remove', (req, res, next) => {
+        Account.findOne({ _id: req.user._id }, (err, account) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            if (!account) {
+                res.status(404);
+                return next(new Error('Sorry, we are having trouble finding that account.'));
+            }
+
+            Memory.findOne({ _id: req.body.id }, (err, memory) => {
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                if (!memory) {
+                    res.status(404);
+                    return next(new Error('Sorry, we cannot find that memory'));
+                }
+                if (req.user._id !== memory.user._id) {
+                    res.status(403);
+                    return next(new Error('You do not have authorization to delete this memory.'))
+                }
+                
+                Memory.findOneAndDelete({ _id: req.body.id }, (err, deletedMemory) => {
+                    if (err) {
+                        res.status(500);
+                        return next(err);
+                    }
+                    if (!deletedMemory) {
+                        res.status(404);
+                        return next(new Error('Sorry, we cannot find that memory'));
+                    }
+                    return res.status(200).send({ msg: 'Memory successfully deleted.' })
+                })
+            })
+        })
+    }) //Allow user to delete their memory.
 
 module.exports = memoriesRouter;
