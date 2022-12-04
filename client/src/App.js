@@ -7,6 +7,7 @@ import About from './About/About.js';
 import Memories from './Memories/Memories.js';
 import NavBar from './NavBar/NavBar.js'
 import RenderForm from './Auth/RenderForm'
+import Profile from './Profile/Profile'
 
 
 
@@ -25,6 +26,7 @@ function App() {
          <Route element={<About/>} path='/about'></Route>
          <Route element={<Memories/>} path='/Memories'></Route>
          <Route element={<RenderForm/>} path = '/login'></Route>
+         <Route element={<Profile/>} path='/profile'></Route>
        </Routes>  
     </div>
   );
