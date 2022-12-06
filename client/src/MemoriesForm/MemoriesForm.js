@@ -1,6 +1,5 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useRef} from "react"
 import {UserContext} from '../Context/UserProvider'
-
 
 const initInputs =     {
     title: '',
@@ -8,7 +7,7 @@ const initInputs =     {
 };
 export default function MemoriesForm(){
     const [memory, setMemory] = useState(initInputs);
-    cost [selectedFile, setSelectedFile] = useState();
+    // cost [selectedFile, setSelectedFile] = useState(null);
     const {addMemory} = useContext(UserContext);
 
     function handleChange(event){
@@ -27,6 +26,12 @@ export default function MemoriesForm(){
         addMemory(memory)
         setMemory(initInputs)
     }
+
+    // function handleFileInput()
+
+
+    
+
        
     const { title, message } = memory
     return(
@@ -48,8 +53,8 @@ export default function MemoriesForm(){
                 />
                 <input
                 type='file'
-                value={selectedFile}
-                onChange={(e) => setSelectedFile(e.target.files[0])} 
+                // value={selectedFile}
+                // onChange={(e) => setSelectedFile(e.target.files[0])} 
                 />
                 <button onClick={addMemory}>Post Memory</button>
                 

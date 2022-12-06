@@ -12,7 +12,7 @@ const userAxios = axios.create()
 export default function UserProvider(props) {
 
   const initState = { 
-    // user: JSON.parse(localStorage.getItem('user')) || {},
+    user: JSON.parse(localStorage.getItem('user')) || {},
     //  token: localStorage.getItem('token') || "",
      memory: [],
      errMsg: ''
@@ -20,7 +20,7 @@ export default function UserProvider(props) {
 const [userState, setuserState] = useState(initState)
 
   function addMemory(newMemory){
-    userAxios.post("/api/memories", newMemory)
+    userAxios.post("/api/memories/new", newMemory)
       .then(res => {
         setuserState(prevState => ({
           ...prevState,
