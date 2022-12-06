@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 export const UserContext = React.createContext()
 
@@ -13,25 +13,39 @@ export default function UserProvider(props) {
 
   const initState = { 
     user: JSON.parse(localStorage.getItem('user')) || {},
-    //  token: localStorage.getItem('token') || "",
-     memory: [],
+     token: localStorage.getItem('token') || "",
+     memories: [],
      errMsg: ''
     }
-const [userState, setuserState] = useState(initState)
+
+const [userState, setUserState] = useState(initState)
 
   function addMemory(newMemory){
     userAxios.post("/api/memories/new", newMemory)
       .then(res => {
-        setuserState(prevState => ({
+        setUserState(prevState => ({
           ...prevState,
-          memory: [...prevState.memory, res.data]
+          memories: [...prevState.memories, res.data]
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+  function getAllMemories(){
+    userAxios.get("/public/memories/")
+      .then(res => {
+        setUserState(prevState => ({
+          ...prevState,
+          memories: res.data
         }))
       })
       .catch(err => console.log(err.response.data.errMsg))
   }
 
+  useEffect(() => {
+    getAllMemories()
+  }, [])
   return (
-    <UserContext.Provider value={{...userState, addMemory}}>
+    <UserContext.Provider value={{...userState, setUserState, getAllMemories, addMemory}}>
       { props.children}
     </UserContext.Provider>
   )

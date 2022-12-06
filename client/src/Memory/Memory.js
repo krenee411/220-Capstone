@@ -1,8 +1,7 @@
 import React from "react";
 
-export default function Memories(props){
-const {title, img_url, message, created} = props
-
+export default function Memory({title, img_url, message, created} ){
+console.log(title)
 
     return (
         <div className="memories">

@@ -2,13 +2,13 @@ import React, { useContext, useState } from "react"
 import Form from "./Form"
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { UserContext } from "../App.js"
+import { UserContext } from "../Context/UserProvider.js"
 
 export const Login = (props) => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { setUser } = useContext(UserContext)
+    const { setUserState} = useContext(UserContext)
 
 
     const handleSubmit = (e) => {
@@ -28,10 +28,10 @@ export const Login = (props) => {
           };
         axios(request)
         .then((resp) => {
-          console.log('response: ', resp);
-          setUser(resp.data)
-          localStorage.setItem('user', JSON.stringify(resp.data));
-
+        //   console.log('response: ', resp);
+          setUserState(resp.data)
+          localStorage.setItem('user', JSON.stringify(resp.data.account));
+          localStorage.setItem('token', JSON.stringify(resp.data.token));
         })
     }
 

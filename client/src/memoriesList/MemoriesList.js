@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import Memories from "../Memories/Memories.js";
+import Memory from "../Memory/Memory.js";
 import { UserContext } from "../Context/UserProvider.js";
 
 export default function MemoriesList(){
     const { memories } = useContext(UserContext)
     return(
         <div>
-            { memories.map(memories => <Memories {...memories} key={memories._id} />) }
+            { memories.map(memory =>{
+                console.log(memory)
+                return <Memory {...memory} key={memory._id} />}) }
         </div>
     )
 }

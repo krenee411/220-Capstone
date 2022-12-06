@@ -1,6 +1,6 @@
 import React from 'react'
 import './Landing.css'
-import Memories from '../Memories/Memories'
+import Memories from '../Memory/Memory'
 
 function Landing() {
   return (
