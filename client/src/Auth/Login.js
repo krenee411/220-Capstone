@@ -5,9 +5,14 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 
 export const Login = (props) => {
+
+    const { setToken } = useContext(UserContext);
+
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { setUserState} = useContext(UserContext)
+
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -1,24 +1,29 @@
 
 import './App.css';
-import React, { useState } from 'react';
-import { Route, Routes} from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Route, Routes, Navigate} from 'react-router-dom'
 import Landing from './Landing/Landing.js';
 import About from './About/About.js';
-import Memories from './Memories/Memories.js';
 import NavBar from './NavBar/NavBar.js'
 import RenderForm from './Auth/RenderForm'
 
-
+const getUserToken = () => {
+  const string = sessionStorage.getItem('token')
+  const token = JSON.parse(string);
+  return token?.token
+}
 
 function App() {
   const [token, setToken] = useState()
 
-  // if(!token){
-  //   return <RenderForm setToken={setToken}/>
-  // }
+  const setUserToken = userToken => {
+    sessionStorage.setItem('token', JSON.stringify(userToken));
+    setToken(userToken)
+  }
   
   return (
     <div>
+      {/* <UserContext.Provider value={{user, setUser}}> */}
        <NavBar />
        <Routes>
          <Route element={<Landing/>} exact path='/'></Route>
