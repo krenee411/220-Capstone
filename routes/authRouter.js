@@ -52,4 +52,18 @@ authRouter
         })
     }) //Login to existing account
 
+    .delete('/deactivate', (req, res, next) => {
+        Account.findOneAndDelete({ _id: req.body.user_id }, (err, account) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            if (!account) {
+                res.status(404);
+                return next(new Error('Sorry, we are having trouble finding that account.'));
+            }
+            return res.status(200).send({ msg: 'Account deactivated successfully.' });
+        })
+    }) //Allow user to deactivate their account.
+
 module.exports = authRouter;
