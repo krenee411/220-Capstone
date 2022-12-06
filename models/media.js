@@ -4,9 +4,9 @@ const Schema = mongoose.Schema
 const mediaSchema = new Schema({
     img_url: {
         type: String,
-            unique: true,
-            required: true,
-        }
-    })
+        unique: true,
+        required: true,
+    }
+})
 
 module.exports = mongoose.model("Media", mediaSchema)
