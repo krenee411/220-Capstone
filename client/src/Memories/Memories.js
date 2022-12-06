@@ -1,5 +1,6 @@
 import React from "react";
 import pic1 from './images/memoriesPic.jpg'
+import './Memories.css'
 
 export default function Memories(){
 

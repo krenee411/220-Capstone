@@ -1,10 +1,14 @@
 import React from "react"
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Form from "./Form"
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import UserContext from '../Contexts/UserContext'
 
 export const Login = (props) => {
+
+    const { setToken } = useContext(UserContext);
+
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -26,7 +30,7 @@ export const Login = (props) => {
           };
         axios(request)
         .then((resp) => {
-          console.log('response: ', resp);
+          console.log('response: ', resp.data.token);
           props.setToken(resp.data.token)
         })
     }
