@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Route, Routes} from 'react-router-dom'
 import Landing from './Landing/Landing.js';
 import About from './About/About.js';
-import Memories from './Memories/Memories.js';
+import Memories from './MemoriesDisplay/MemoriesDisplay.js';
 import NavBar from './NavBar/NavBar.js'
 import RenderForm from './Auth/RenderForm'
 import Profile from './Profile/Profile'
