@@ -1,17 +1,19 @@
-import React, { useContext, useState } from "react"
+import React, { useState, useContext } from "react"
 import Form from "./Form"
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { UserContext } from "../Context/UserProvider.js"
 
+
 export const Login = (props) => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
     const { setUserState} = useContext(UserContext)
 
 
-    const handleSubmit = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
         const request = {
             method: 'Post',
@@ -28,7 +30,6 @@ export const Login = (props) => {
           };
         axios(request)
         .then((resp) => {
-        //   console.log('response: ', resp);
           setUserState(resp.data)
           localStorage.setItem('user', JSON.stringify(resp.data.account));
           localStorage.setItem('token', JSON.stringify(resp.data.token));
@@ -37,7 +38,7 @@ export const Login = (props) => {
 
     return(
         <>
-            <Form submit={handleSubmit} username={username} password={password} email={email} setUsername={setUsername} setPassword={setPassword} setEmail={setEmail}/>
+            <Form submit={handleLogin} username={username} password={password} email={email} setUsername={setUsername} setPassword={setPassword} setEmail={setEmail}/>
             <h3>Don't have an account?</h3>
             <button onClick={() => props.toggleForm('signup')}>SIGNUP</button>
         </>
