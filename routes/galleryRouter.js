@@ -1,7 +1,7 @@
 const express = require('express');
 const galleryRouter = express.Router();
 const Account = require('../models/account.js');
-// const Media = require('../models/media.js'); *UNCOMMENT WHEN MEDIA SCHEMA IS MADE*
+const Media = require('../models/media.js');
 const multer = require('multer');
 const { GridFsStorage } = require('multer-gridfs-storage');
 const uuid = require('uuid');
@@ -34,40 +34,40 @@ const upload = multer({
         }
     }
 })
-// *UNCOMMENT AND REMOVE THIS LINE ONCE THE MEDIA SCHEMA HAS BEEN MADE*
-// galleryRouter
-//     .get('/', (req, res, next) => {
-//         Media.find({ }, (err, images) => {
-//             if (err) {
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             images.sort(() => Math.random() - 0.5);
-//             return res.status(200).send(images);
-//         })
-//     }) //Get all gallery images.
 
-//     .post('/upload', upload.single('file'), (req, res, next) => {
-//         Account.findOne({ _id: req.user._id }, (err, account) => {
-//             if (err) {
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             if (!account) {
-//                 res.status(404);
-//                 return next(new Error('Sorry, we are having trouble finding your account.'));
-//             }
+galleryRouter
+    .get('/', (req, res, next) => {
+        Media.find({ }, (err, images) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            images.sort(() => Math.random() - 0.5);
+            return res.status(200).send(images);
+        })
+    }) //Get all gallery images.
 
-//             req.body.img_url = `http://localhost:9000/file/${req.file.filename}`;
-//             const newMedia = new Media(req.body);
-//             newMedia.save((err, savedMedia) => {
-//                 if (err) {
-//                     res.status(500);
-//                     return next(err);
-//                 }
-//                 return res.status(201).send(savedMedia);
-//             })
-//         })
-//     }) //Allow user to upload a new image to the gallery.
+    .post('/upload', upload.single('file'), (req, res, next) => {
+        Account.findOne({ _id: req.user._id }, (err, account) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
+            if (!account) {
+                res.status(404);
+                return next(new Error('Sorry, we are having trouble finding your account.'));
+            }
+
+            req.body.img_url = `http://localhost:9000/file/${req.file.filename}`;
+            const newMedia = new Media(req.body);
+            newMedia.save((err, savedMedia) => {
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                }
+                return res.status(201).send(savedMedia);
+            })
+        })
+    }) //Allow user to upload a new image to the gallery.
 
 module.exports = galleryRouter;

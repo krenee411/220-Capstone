@@ -58,18 +58,20 @@ memoriesRouter
                 return next(new Error('Sorry, we are having trouble finding your account.'));
             }
 
-            const addHash = (str) => {
-                if (str.charAt(0) !== '#') {
-                    return `#${str}`;
+            if (req.body.tags !== undefined) {
+                const addHash = (str) => {
+                    if (str.charAt(0) !== '#') {
+                        return `#${str}`;
+                    }
+                    return str;
                 }
-                return str;
+                const tagList = req.body.tags.split(', ').map(e => addHash(e));
+                req.body.tags = tagList;
             }
-            const tagList = req.body.tags.split(', ').map(e => addHash(e));
 
             req.body = {
                 title: req.body.title,
                 message: req.body.message,
-                tags: tagList,
                 user: req.user
             }
             if (req.file !== undefined) {
