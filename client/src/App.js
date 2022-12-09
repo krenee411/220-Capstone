@@ -8,6 +8,7 @@ import Memories from './MemoriesDisplay/MemoriesDisplay.js';
 import NavBar from './NavBar/NavBar.js'
 import RenderForm from './Auth/RenderForm'
 import Profile from './Profile/Profile'
+// import UserToken from './Context/UserToken'
 
 const getUserToken = () => {
   const string = sessionStorage.getItem('token')
@@ -26,6 +27,7 @@ function App() {
   return (
     <div>
        <NavBar />
+       {/* <UserToken.Provider value={{token}}> */}
        <Routes>
          <Route element={<Landing/>} exact path='/'></Route>
          <Route element={<About/>} path='/about'></Route>
@@ -33,6 +35,7 @@ function App() {
          <Route element={<RenderForm setToken={setUserToken}/>} path = '/login'></Route>
          <Route element={<Profile/>} path='/profile'></Route>
        </Routes>  
+       {/* </UserToken.Provider> */}
     </div>
   );
 }
