@@ -3,17 +3,6 @@ const blogRouter = express.Router()
 const Article = require('../models/article.js')
 
 blogRouter
-    //get all
-    .get("/", (req, res, next) => {
-        Article.find((err, article) => {
-            if (err) {
-                res.status(500);
-                return next(err);
-            }
-            res.status(200).send(article)
-        })
-    }) 
-
     //delete one
     .delete("/:articleID", (req, res, next) => {
         Article.findOneAndDelete({_id: req.params.articleID}, (err, article) => {

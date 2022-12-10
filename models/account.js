@@ -40,7 +40,10 @@ const accountSchema = new Schema({
             message: 'Passwords require uppercase, lowercase, number and special character. Must be between 8 and 16 characters long.'
           }
     },
-    profimg: String,
+    profimg: {
+        type: String,
+        default: 'https://p.kindpng.com/picc/s/24-248253_user-profile-default-image-png-clipart-png-download.png'
+    },
     joined: {
         type: Date,
         default: Date.now

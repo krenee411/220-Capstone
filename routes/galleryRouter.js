@@ -36,17 +36,6 @@ const upload = multer({
 })
 
 galleryRouter
-    .get('/', (req, res, next) => {
-        Media.find({ }, (err, images) => {
-            if (err) {
-                res.status(500);
-                return next(err);
-            }
-            images.sort(() => Math.random() - 0.5);
-            return res.status(200).send(images);
-        })
-    }) //Get all gallery images.
-
     .post('/upload', upload.single('file'), (req, res, next) => {
         Account.findOne({ _id: req.user._id }, (err, account) => {
             if (err) {

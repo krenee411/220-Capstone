@@ -36,17 +36,6 @@ const upload = multer({
 })
 
 memoriesRouter
-    .get('/', (req, res, next) => {
-        Memory.find({ }, (err, memories) => {
-            if (err) {
-                res.status(500);
-                return next(err);
-            }
-            memories.sort((a, b) => new Date(b.created) - new Date(a.created));
-            return res.status(200).send(memories);
-        })
-    }) //Get all memories.
-
     .post('/new', upload.single('file'), (req, res, next) => {
         Account.findOne({ _id: req.user._id }, (err, account) => {
             if (err) {
@@ -58,7 +47,7 @@ memoriesRouter
                 return next(new Error('Sorry, we are having trouble finding your account.'));
             }
 
-            if (req.body.tags !== undefined) {
+            if (req.body.tags) {
                 const addHash = (str) => {
                     if (str.charAt(0) !== '#') {
                         return `#${str}`;
@@ -72,6 +61,7 @@ memoriesRouter
             req.body = {
                 title: req.body.title,
                 message: req.body.message,
+                tags: req.body.tags,
                 user: req.user
             }
             if (req.file !== undefined) {
