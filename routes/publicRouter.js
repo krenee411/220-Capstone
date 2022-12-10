@@ -2,6 +2,7 @@ const express = require('express');
 const publicRouter = express.Router();
 const Memory = require('../models/memories.js');
 const Media = require('../models/media.js');
+const Article = require('../models/article.js');
 
 publicRouter
     .get('/memories', (req, res, next) => {

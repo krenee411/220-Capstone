@@ -31,6 +31,7 @@ app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }
 app.use('/api/blog', require('./routes/blogRouter.js'));
 app.use('/api/gallery', require('./routes/galleryRouter.js'));
 app.use('/api/memories', require('./routes/memoriesRouter.js'));
+app.use('/api/settings', require('./routes/settingsRouter.js'));
 app.use('/public', require('./routes/publicRouter.js'));
 
 //Connection to image buckets.
