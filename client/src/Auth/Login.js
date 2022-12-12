@@ -37,7 +37,8 @@ export const Login = (props) => {
 
           setUserState(prevState => ({
             ...prevState,
-            user: resp.data.account
+            user: resp.data.account,
+            token:resp.data.token
           }))
           navigate('/profile')
         })
