@@ -3,7 +3,7 @@ import Form from "./Form"
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { UserContext } from "../Context/UserProvider.js"
-
+import { useNavigate } from "react-router-dom"
 
 export const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ export const Login = (props) => {
     const [password, setPassword] = useState("");
 
     const { setUserState} = useContext(UserContext)
-
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -30,9 +30,16 @@ export const Login = (props) => {
           };
         axios(request)
         .then((resp) => {
-          setUserState(resp.data)
+        //   setUserState(resp.data)
           localStorage.setItem('user', JSON.stringify(resp.data.account));
           localStorage.setItem('token', JSON.stringify(resp.data.token));
+        //   setUserState(resp.data.account)
+
+          setUserState(prevState => ({
+            ...prevState,
+            user: resp.data.account
+          }))
+          navigate('/profile')
         })
     }
 
