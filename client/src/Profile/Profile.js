@@ -1,16 +1,25 @@
-import React, { useState, useContext } from 'react'; 
+import React, { useState, useContext, useEffect } from 'react'; 
 import {UserContext} from '../Context/UserProvider';
+
 function Profile() { 
     const { user } = useContext(UserContext)
-    const [profilePic, setProfilePic] = useState(user.profilePic); 
+    const [profilePic, setProfilePic] = useState(''); 
     const [username, setUsername] = useState(user.username); 
     const [email, setEmail] = useState(user.email); // 
- 
+    
+    useEffect(() => {
+        async function fetchProfilePic() {
+            const src = await user.profimg
+            setProfilePic(src)
+        }
+        fetchProfilePic();
+     }, [user])
+    
     if (user){
         return (
             <div>
                 <h1>Your Profile</h1>
-                <img src="https://media.istockphoto.com/id/1309328823/photo/headshot-portrait-of-smiling-male-employee-in-office.jpg?b=1&s=170667a&w=0&k=20&c=MRMqc79PuLmQfxJ99fTfGqHL07EDHqHLWg0Tb4rPXQc=" alt="Girl in a jacket" width="250" height="150"/> 
+                <img src={profilePic} alt="profile" width="250" height="200"/> 
                 <h2>Username: {username}</h2>
                 <h2>Email: {email}</h2>
             </div>
