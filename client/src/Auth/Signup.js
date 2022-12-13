@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import Form from "./Form"
 import { UserContext } from "../Context/UserProvider.js"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 export const Signup = (props) => {
     const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ export const Signup = (props) => {
     const [profilePic, setProfilePic] = useState('');
 
     const { setUserState } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -30,9 +32,14 @@ export const Signup = (props) => {
           };
         axios(request)
         .then((resp) => {
-          setUserState(resp.data)
-          localStorage.setItem('user', JSON.stringify(resp.data.account));
-          localStorage.setItem('token', JSON.stringify(resp.data.token));
+          const user = localStorage.setItem('user', JSON.stringify(resp.data.account));
+          const token = localStorage.setItem('token', JSON.stringify(resp.data.token));
+          setUserState(prevState => ({
+            ...prevState,
+            user: user,
+            token:token
+          }))
+          navigate('/profile')
         })
     }
 

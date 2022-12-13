@@ -11,6 +11,7 @@ function Profile() {
     useEffect(() => {
         async function fetchProfilePic() {
             const user = JSON.parse(localStorage.getItem('user'))
+            const token = JSON.parse(localStorage.getItem('token'))
             if(user){
                 console.log(user)
                 setProfilePic(user.profimg)
@@ -18,7 +19,7 @@ function Profile() {
                 setEmail(user.email)
                 setUserState(prevState => ({
                     ...prevState,
-                    user
+                    user, token
                   }))
             }
         }

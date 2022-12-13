@@ -31,14 +31,14 @@ export const Login = (props) => {
         axios(request)
         .then((resp) => {
         //   setUserState(resp.data)
-          localStorage.setItem('user', JSON.stringify(resp.data.account));
-          localStorage.setItem('token', JSON.stringify(resp.data.token));
+          const user = localStorage.setItem('user', JSON.stringify(resp.data.account));
+          const token = localStorage.setItem('token', JSON.stringify(resp.data.token));
         //   setUserState(resp.data.account)
 
           setUserState(prevState => ({
             ...prevState,
-            user: resp.data.account,
-            token:resp.data.token
+            user: user,
+            token:token
           }))
           navigate('/profile')
         })
