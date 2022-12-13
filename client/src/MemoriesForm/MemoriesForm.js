@@ -22,8 +22,10 @@ export default function MemoriesForm(){
     }
 
     function handleSubmit(e){
+
         e.preventDefault()
         addMemory(memory)
+        console.log(memory)
         setMemory(initInputs)
     }
 
@@ -35,7 +37,7 @@ export default function MemoriesForm(){
        
     const { title, message } = memory
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <div>
                 <input
                 type='text'

@@ -23,6 +23,7 @@ const [userState, setUserState] = useState(initState)
   function addMemory(newMemory){
     userAxios.post("/api/memories/new", newMemory)
       .then(res => {
+        console.log('inside then' + res.data)
         setUserState(prevState => ({
           ...prevState,
           memories: [...prevState.memories, res.data]

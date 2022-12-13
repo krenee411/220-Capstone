@@ -1,11 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MemoriesForm from '../MemoriesForm/MemoriesForm.js'
 import MemoriesList from '../memoriesList/MemoriesList.js'
 import { UserContext } from "../Context/UserProvider.js"
 import { Link } from 'react-router-dom'
 
 export default function MemoriesDisplay() {
-const { user, token, } = useContext(UserContext)
+  const [token, setToken] = useState('');
+
+const localToken = localStorage.getItem('token')
+
+useEffect(() => {
+  async function fetchTokens() {
+    const token = JSON.parse(localStorage.getItem('token'))
+    setToken(token)
+  }
+  fetchTokens();
+}, [localToken, token])
+
 
   return (
     <div>
