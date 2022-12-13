@@ -1,0 +1,11 @@
+.memPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 3px 3px 5px whitesmoke;
+}
+
+.memPage>h1{
+    font-family: 'Rubik Vinyl', cursive;
+}

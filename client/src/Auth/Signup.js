@@ -46,7 +46,7 @@ export const Signup = (props) => {
     return(
         <>
             <Form submit={handleSignup} username={username} password={password} email ={email} profilePic ={profilePic} setUsername={setUsername} setPassword={setPassword} setEmail={setEmail} setProfilePic={setProfilePic}/>
-            <h3>Already have an account?</h3>
+            <h3 className="authNotify">Already have an account?</h3>
             <button onClick={() => props.toggleForm('login')}>SIGNIN</button>
         </>
     )

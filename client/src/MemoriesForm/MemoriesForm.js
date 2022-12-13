@@ -1,5 +1,6 @@
 import React, {useState, useContext, useRef} from "react"
 import {UserContext} from '../Context/UserProvider'
+import './MemoriesForm.css'
 
 const initInputs =     {
     title: '',
@@ -36,7 +37,7 @@ export default function MemoriesForm(){
     const { title, message } = memory
     return(
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className="memForm">
                 <input
                 type='text'
                 name='title'

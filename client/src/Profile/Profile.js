@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'; 
 import {UserContext} from '../Context/UserProvider';
+import './Profile.css'
 
 function Profile() { 
     const { setUserState } = useContext(UserContext)
@@ -28,8 +29,8 @@ function Profile() {
     
     if (localState){
         return (
-            <div>
-                <h1>Your Profile</h1>
+            <div className='profilePage'>
+                <h1>Profile</h1>
                 <img src={profilePic} alt="profile" width="250" height="200"/> 
                 <h2>Username: {username}</h2>
                 <h2>Email: {email}</h2>
@@ -37,8 +38,8 @@ function Profile() {
         )
     } else {
         return (
-            <div>
-                <h1>Your Profile</h1>
+            <div className='profilePage'>
+                <h1>Profile</h1>
                 <img src="https://p.kindpng.com/picc/s/24-248253_user-profile-default-image-png-clipart-png-download.png" alt="profile" width="250" height="200"/> 
                 <h2>Username: username123</h2>
                 <h2>Email: email123@hotmail.com</h2>

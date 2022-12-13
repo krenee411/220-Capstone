@@ -47,7 +47,7 @@ export const Login = (props) => {
     return(
         <>
             <Form submit={handleLogin} username={username} password={password} email={email} setUsername={setUsername} setPassword={setPassword} setEmail={setEmail}/>
-            <h3>Don't have an account?</h3>
+            <h3 className="authNotify">Don't have an account?</h3>
             <button onClick={() => props.toggleForm('signup')}>SIGNUP</button>
         </>
     )
