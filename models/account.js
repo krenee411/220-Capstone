@@ -42,7 +42,10 @@ const accountSchema = new Schema({
     },
     profimg: {
         type: String,
-        default: 'https://p.kindpng.com/picc/s/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        default: 'https://p.kindpng.com/picc/s/24-248253_user-profile-default-image-png-clipart-png-download.png',
+        index: {
+            sparse: true
+        }
     },
     joined: {
         type: Date,
