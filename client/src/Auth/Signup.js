@@ -11,9 +11,6 @@ export const Signup = (props) => {
     const [password, setPassword] = useState('');
     const [profilePic, setProfilePic] = useState('');
 
-    
-
-
     const { setUserState } = useContext(UserContext)
     const navigate = useNavigate()
 
@@ -48,7 +45,7 @@ export const Signup = (props) => {
           navigate('/profile')
         })
     }
-    console.log(profilePic)
+
     return(
         <>
             <Form submit={handleSignup} username={username} password={password} email ={email} profilePic ={profilePic} setUsername={setUsername} setPassword={setPassword} setEmail={setEmail} setProfilePic={setProfilePic}/>

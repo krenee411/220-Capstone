@@ -23,10 +23,8 @@ export default function MemoriesForm(){
     }
 
     function handleSubmit(e){
-
         e.preventDefault()
         addMemory(memory)
-        console.log(memory)
         setMemory(initInputs)
     }
 
