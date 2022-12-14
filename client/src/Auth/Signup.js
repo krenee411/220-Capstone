@@ -11,10 +11,21 @@ export const Signup = (props) => {
     const [password, setPassword] = useState('');
     const [profilePic, setProfilePic] = useState('');
 
+    
+
+
     const { setUserState } = useContext(UserContext)
     const navigate = useNavigate()
 
     const handleSignup = (e) => {
+      const data = {
+        email:email,
+        username:username,
+        password:password
+    }
+    if(profilePic !== ''){
+      data.profimg = profilePic
+    }
         e.preventDefault();
         const request = {
             method: 'Post',
@@ -23,12 +34,7 @@ export const Signup = (props) => {
               host: "http://localhost",
               port: 9000,
             },
-            data:{
-                email:email,
-                username:username,
-                password:password,
-                profimg:profilePic
-            }
+            data:data
           };
         axios(request)
         .then((resp) => {
@@ -42,11 +48,11 @@ export const Signup = (props) => {
           navigate('/profile')
         })
     }
-
+    console.log(profilePic)
     return(
         <>
             <Form submit={handleSignup} username={username} password={password} email ={email} profilePic ={profilePic} setUsername={setUsername} setPassword={setPassword} setEmail={setEmail} setProfilePic={setProfilePic}/>
-            <h3>Already have an account?</h3>
+            <h3 className="authNotify">Already have an account?</h3>
             <button onClick={() => props.toggleForm('login')}>SIGNIN</button>
         </>
     )

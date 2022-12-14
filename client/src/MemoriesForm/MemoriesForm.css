@@ -1,0 +1,10 @@
+.memForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: crimson;
+    border: 2px solid black;
+    font-family: 'audiowide-regular-webfont';	
+    padding: 10px;
+    max-width: 400px;
+}

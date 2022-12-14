@@ -3,6 +3,7 @@ import MemoriesForm from '../MemoriesForm/MemoriesForm.js'
 import MemoriesList from '../memoriesList/MemoriesList.js'
 import { UserContext } from "../Context/UserProvider.js"
 import { Link } from 'react-router-dom'
+import './MemoriesDisplay.css'
 
 export default function MemoriesDisplay() {
   const [token, setToken] = useState('');
@@ -19,7 +20,7 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className='memPage'>
         <h1>Memories</h1>
         <p>Welcome to the Pensacoola Memories page!!!</p>
 
